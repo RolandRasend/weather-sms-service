@@ -10,3 +10,4 @@ docker/mysql/data/
 /phpunit.xml
 /data/cache/*
 !/data/cache/.gitkeep
+docker/php/xdebug.ini
