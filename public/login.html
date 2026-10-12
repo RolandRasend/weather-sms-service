@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather SMS Service - Login</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-header">
+            <h1>Weather SMS Service</h1>
+            <p style="text-align: center; color: #795548;">Willkommen zurück!</p>
+        </div>
+
+        <form action="/api/login" method="POST">
+            <div class="form-group">
+                <label for="username">Benutzername</label>
+                <input type="text" id="username" name="username" required placeholder="Dein Wandername">
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" required placeholder="********">
+            </div>
+            <button type="submit">Einloggen</button>
+        </form>
+
+        <div class="switch-link">
+            <p>Noch keinen Account? <a href="register.html">Stattdessen registrieren</a></p>
+        </div>
+    </div>
+</body>
+</html>
