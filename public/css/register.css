@@ -1,0 +1,7 @@
+/* Register specific styles */
+.register-info {
+    font-size: 0.85rem;
+    color: #795548;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
