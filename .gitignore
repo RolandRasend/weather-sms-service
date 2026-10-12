@@ -1,0 +1,12 @@
+/vendor/
+.env
+.env.local
+docker/mysql/data/
+/.phpcs-cache
+/.psalm-cache
+/.phpunit.cache
+/clover.xml
+/coveralls-upload.json
+/phpunit.xml
+/data/cache/*
+!/data/cache/.gitkeep

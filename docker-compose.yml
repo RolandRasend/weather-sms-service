@@ -1,0 +1,54 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: weather-app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www
+    environment:
+      DB_HOST: db
+      DB_DATABASE: ${DB_DATABASE:-weather_db}
+      DB_USERNAME: ${DB_USERNAME:-user}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+    #TODO: Populate devices with path for actual USB GSM Adapter or Hat once available
+    #devices:
+      #- "/dev/ttyUSB0:/dev/ttyUSB0"
+    depends_on:
+      - db
+    networks:
+      - weather-network
+
+  db:
+    image: mysql:latest
+    container_name: weather-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-weather_db}
+      MYSQL_USER: ${DB_USERNAME:-user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - weather-network
+
+  composer:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: weather-composer
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    entrypoint: ["composer"]
+    networks:
+      - weather-network
+
+networks:
+  weather-network:
+    driver: bridge
+
+volumes:
+  db-data:
