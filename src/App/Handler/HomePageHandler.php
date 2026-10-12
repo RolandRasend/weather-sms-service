@@ -14,7 +14,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 final class HomePageHandler implements RequestHandlerInterface
 {
     public function __construct(
-        private readonly string $containerName,
         private readonly RouterInterface $router,
         private readonly ?TemplateRendererInterface $template = null
     ) {

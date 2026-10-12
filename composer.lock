@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bf9dcc90e85b8bd69dd41311fe52c45",
+    "content-hash": "c595eb9295b4621d2d3bcd60e036d509",
     "packages": [
+        {
+            "name": "bluepsyduck/laminas-autowire-factory",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BluePsyduck/laminas-autowire-factory.git",
+                "reference": "577cff984e57303e256e602c3f3e0f20280f0551"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BluePsyduck/laminas-autowire-factory/zipball/577cff984e57303e256e602c3f3e0f20280f0551",
+                "reference": "577cff984e57303e256e602c3f3e0f20280f0551",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-servicemanager": "^3.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "bluepsyduck/test-helper": "^2.0",
+                "laminas/laminas-config-aggregator": "^1.1",
+                "mikey179/vfsstream": "^1.6",
+                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "rregeer/phpunit-coverage-check": "^0.3",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BluePsyduck\\LaminasAutoWireFactory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "BluePsyduck",
+                    "email": "bluepsyduck@gmx.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laminas factory implementation allowing for auto-wiring like in Symfony.",
+            "homepage": "https://github.com/BluePsyduck/laminas-autowire-factory",
+            "keywords": [
+                "BluePsyduck",
+                "auto-wire",
+                "factory",
+                "laminas"
+            ],
+            "support": {
+                "issues": "https://github.com/BluePsyduck/laminas-autowire-factory/issues",
+                "source": "https://github.com/BluePsyduck/laminas-autowire-factory/tree/2.1.0"
+            },
+            "time": "2023-10-03T06:52:19+00:00"
+        },
         {
             "name": "brick/varexporter",
             "version": "0.7.0",
