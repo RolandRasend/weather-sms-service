@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 use App\Handler\HomePageHandler;
 use App\Handler\PingHandler;
+use App\Handler\Account\RegisterHandler;
+use App\Handler\Account\UpdatePhoneHandler;
+use App\Handler\Account\AddDestinationHandler;
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
 use Psr\Container\ContainerInterface;
@@ -42,4 +45,7 @@ use Psr\Container\ContainerInterface;
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', HomePageHandler::class, 'home');
     $app->get('/api/ping', PingHandler::class, 'api.ping');
+    $app->post('/api/register', RegisterHandler::class, 'account.register');
+    $app->patch('/api/account/phone', UpdatePhoneHandler::class, 'account.update_phone');
+    $app->post('/api/account/destination', AddDestinationHandler::class, 'account.add_destination');
 };

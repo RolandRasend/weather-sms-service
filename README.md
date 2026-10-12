@@ -18,30 +18,40 @@ Features include:
    git clone <repository-url>
    cd weather-sms-service
    ```
-2. Configure environment variables:
+2. Configure environment variables and Xdebug:
    ```bash
    cp .env.example .env
+   cp docker/php/xdebug.ini.example docker/php/xdebug.ini
    ```
-   Edit `.env` and provide your `METEOBLUE_API_KEY`.
+   Edit `.env` and provide your `METEOBLUE_API_KEY` and database credentials. You can also customize `docker/php/xdebug.ini` if needed.
 
 3. Install dependencies via containerized Composer:
    ```bash
    docker-compose run --rm composer install
    ```
 
+4. Run database migrations:
+   Start the services first (see below), then run:
+   ```bash
+   cat data/migrations/*.sql | docker exec -i weather-db mysql -u weather_user -psecret_password weather_db
+   ```
+
 ## Running the Service
-To start the services (PHP app and MySQL):
+To start the services (Nginx, PHP app, and MySQL):
 ```bash
 docker-compose up -d
 ```
+The application will be available at `http://localhost`.
 
 ## Environment Variables
 The following environment variables are configured in `.env`:
 - `DB_DATABASE`: MySQL database name.
 - `DB_USERNAME`: MySQL user.
 - `DB_PASSWORD`: MySQL password.
+- `DB_ROOT_PASSWORD`: MySQL root password.
 - `METEOBLUE_API_KEY`: Your Meteoblue API key.
 - `GSM_DEVICE`: Path to the GSM modem (default: `/dev/ttyUSB0`).
+- `XDEBUG_MODE`: Xdebug mode (default: `debug`).
 
 ## Project Structure
 ```text
@@ -50,6 +60,8 @@ weather-sms-service/
 ├── config/             # Application configuration
 ├── data/               # Cache, logs, and other data
 ├── docker/             # Docker configuration
+│   ├── nginx/          # Nginx configuration
+│   │   └── default.conf
 │   └── php/
 │       └── Dockerfile
 ├── public/             # Web server entry point (index.php)

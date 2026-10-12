@@ -33,6 +33,9 @@ class ConfigProvider
         return [
             'invokables' => [
                 Handler\PingHandler::class => Handler\PingHandler::class,
+                Handler\Account\RegisterHandler::class => Handler\Account\RegisterHandler::class,
+                Handler\Account\UpdatePhoneHandler::class => Handler\Account\UpdatePhoneHandler::class,
+                Handler\Account\AddDestinationHandler::class => Handler\Account\AddDestinationHandler::class,
             ],
             'factories'  => [
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
