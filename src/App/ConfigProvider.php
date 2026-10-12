@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
+use BluePsyduck\LaminasAutoWireFactory\AutoWireFactory;
+
 /**
  * The configuration provider for the App module
  *
@@ -31,14 +33,11 @@ class ConfigProvider
     public function getDependencies(): array
     {
         return [
-            'invokables' => [
-                Handler\PingHandler::class => Handler\PingHandler::class,
-                Handler\Account\RegisterHandler::class => Handler\Account\RegisterHandler::class,
-                Handler\Account\UpdatePhoneHandler::class => Handler\Account\UpdatePhoneHandler::class,
-                Handler\Account\AddDestinationHandler::class => Handler\Account\AddDestinationHandler::class,
+            'abstract_factories' => [
+                AutoWireFactory::class,
             ],
-            'factories'  => [
-                Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
+            'factories'          => [
+                //any actually needed factories go here
             ],
         ];
     }
