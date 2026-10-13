@@ -28,10 +28,14 @@ COPY docker/php/xdebug.ini* /usr/local/etc/php/conf.d/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Setup directories for Nginx
-RUN mkdir -p /run/nginx \
-    && chown -R nginx:nginx /run/nginx
+RUN mkdir -p /run/nginx /var/lib/nginx/tmp /var/log/nginx \
+    && chown -R nginx:nginx /run/nginx /var/lib/nginx /var/log/nginx
 
 WORKDIR /var/www
+
+# Install composer dependencies
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --optimize-autoloader --no-scripts
 
 # Copy configurations
 COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
