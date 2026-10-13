@@ -9,7 +9,9 @@ RUN apk add --no-cache \
     libxml2-dev \
     zip \
     unzip \
-    linux-headers
+    linux-headers \
+    supervisor \
+    nginx
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql bcmath gd
@@ -25,6 +27,18 @@ COPY docker/php/xdebug.ini* /usr/local/etc/php/conf.d/
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Setup directories for Nginx
+RUN mkdir -p /run/nginx \
+    && chown -R nginx:nginx /run/nginx
+
 WORKDIR /var/www
 
-CMD ["php-fpm"]
+# Copy configurations
+COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Script to initialize database and start supervisor
+COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
