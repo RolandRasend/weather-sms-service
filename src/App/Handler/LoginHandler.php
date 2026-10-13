@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace App\Handler;
 
-use Laminas\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\EmptyResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function time;
-
-final class PingHandler implements RequestHandlerInterface
+final class LoginHandler implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return new JsonResponse(['ack' => time()]);
+        $body = $request->getParsedBody();
+        return new EmptyResponse();
     }
 }

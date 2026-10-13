@@ -84,17 +84,6 @@
       <code><![CDATA[require __DIR__ . '/config.php']]></code>
     </PropertyTypeCoercion>
   </file>
-  <file src="test/AppTest/Handler/PingHandlerTest.php">
-    <MixedArgument>
-      <code><![CDATA[$json]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code><![CDATA[$json]]></code>
-    </MixedAssignment>
-    <MixedPropertyFetch>
-      <code><![CDATA[$json->ack]]></code>
-    </MixedPropertyFetch>
-  </file>
   <file src="test/MezzioInstallerTest/AddPackageTest.php">
     <MixedArgument>
       <code><![CDATA[$stabilityFlags]]></code>

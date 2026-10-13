@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace AppTest\Handler;
 
 use App\Handler\HomePageHandler;
-use App\Handler\PingHandler;
 use App\Handler\Account\RegisterHandler;
 use Mezzio\Router\RouterInterface;
 use PHPUnit\Framework\TestCase;
@@ -27,12 +26,6 @@ class AutoWireIntegrationTest extends TestCase
         $this->assertInstanceOf(HomePageHandler::class, $handler);
     }
 
-    public function testCanCreatePingHandler(): void
-    {
-        $this->assertTrue($this->container->has(PingHandler::class));
-        $handler = $this->container->get(PingHandler::class);
-        $this->assertInstanceOf(PingHandler::class, $handler);
-    }
 
     public function testCanCreateRegisterHandler(): void
     {
