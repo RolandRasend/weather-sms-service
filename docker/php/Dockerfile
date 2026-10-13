@@ -23,6 +23,7 @@ RUN apk add --no-cache $PHPIZE_DEPS \
 
 # Configure Xdebug
 COPY docker/php/xdebug.ini* /usr/local/etc/php/conf.d/
+COPY docker/php/www.conf /usr/local/etc/php-fpm.d/zzz-clear-env.conf
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -44,5 +45,7 @@ COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Script to initialize database and start supervisor
 COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+RUN touch /tmp/xdebug.log && chmod 666 /tmp/xdebug.log
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

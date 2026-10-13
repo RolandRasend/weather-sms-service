@@ -14,7 +14,7 @@ services:
       DB_DATABASE: ${DB_DATABASE:-weather_db}
       DB_USERNAME: ${DB_USERNAME:-user}
       DB_PASSWORD: ${DB_PASSWORD:-password}
-      XDEBUG_MODE: ${XDEBUG_MODE:-debug}
+      PHP_IDE_CONFIG: "serverName=localhost"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     #TODO: Populate devices with path for actual USB GSM Adapter or Hat once available
