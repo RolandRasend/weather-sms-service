@@ -5,6 +5,8 @@ services:
       dockerfile: docker/php/Dockerfile
     container_name: weather-app
     restart: unless-stopped
+    ports:
+      - "80:80"
     volumes:
       - .:/var/www
     environment:
@@ -17,11 +19,9 @@ services:
       - "host.docker.internal:host-gateway"
     #TODO: Populate devices with path for actual USB GSM Adapter or Hat once available
     #devices:
-      #- "/dev/ttyUSB0:/dev/ttyUSB0"
+    #  - "/dev/ttyUSB0:/dev/ttyUSB0"
     depends_on:
       - db
-    networks:
-      - weather-network
 
   db:
     image: mysql:latest
@@ -36,42 +36,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
     volumes:
       - db-data:/var/lib/mysql
-    networks:
-      - weather-network
-
-  web:
-    image: nginx:latest
-    container_name: weather-web
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    volumes:
-      - .:/var/www
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      - app
-    networks:
-      - weather-network
-
-  composer:
-    build:
-      context: .
-      dockerfile: docker/php/Dockerfile
-    container_name: weather-composer
-    volumes:
-      - .:/var/www
-    working_dir: /var/www
-    entrypoint: ["composer"]
-    environment:
-      XDEBUG_MODE: ${XDEBUG_MODE:-debug}
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    networks:
-      - weather-network
-
-networks:
-  weather-network:
-    driver: bridge
 
 volumes:
   db-data:
