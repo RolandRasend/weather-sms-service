@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Handler\Account\AddDestinationHandler;
+use App\Handler\Account\DashboardHandler;
 use App\Handler\Account\LoginHandler;
-use App\Handler\Account\RegisterHandler;
 use App\Handler\Account\RegistrationHandler;
 use App\Handler\Account\UpdatePhoneHandler;
 use App\Handler\HomePageHandler;
@@ -49,4 +49,5 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->post('/api/register', RegistrationHandler::class, 'account.register');
     $app->patch('/api/account/phone', UpdatePhoneHandler::class, 'account.update_phone');
     $app->post('/api/account/destination', AddDestinationHandler::class, 'account.add_destination');
+    $app->get('/dashboard', DashboardHandler::class, 'account.dashboard');
 };
