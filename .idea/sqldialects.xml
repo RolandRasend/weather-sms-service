@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/data/migrations/20261012000000_create_user_table.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/data/migrations/20261012000001_create_destination_table.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/App/Migrations/Version20261012000000.php" dialect="GenericSQL" />
+    <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

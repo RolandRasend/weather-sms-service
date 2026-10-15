@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-use App\Handler\HomePageHandler;
-use App\Handler\LoginHandler;
-use App\Handler\Account\RegisterHandler;
-use App\Handler\Account\UpdatePhoneHandler;
 use App\Handler\Account\AddDestinationHandler;
+use App\Handler\Account\LoginHandler;
+use App\Handler\Account\RegisterHandler;
+use App\Handler\Account\RegistrationHandler;
+use App\Handler\Account\UpdatePhoneHandler;
+use App\Handler\HomePageHandler;
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
 use Psr\Container\ContainerInterface;
@@ -45,7 +46,7 @@ use Psr\Container\ContainerInterface;
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', HomePageHandler::class, 'home');
     $app->post('/api/login', LoginHandler::class, 'api.login');
-    $app->post('/api/register', RegisterHandler::class, 'account.register');
+    $app->post('/api/register', RegistrationHandler::class, 'account.register');
     $app->patch('/api/account/phone', UpdatePhoneHandler::class, 'account.update_phone');
     $app->post('/api/account/destination', AddDestinationHandler::class, 'account.add_destination');
 };
