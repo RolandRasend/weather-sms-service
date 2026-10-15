@@ -2,14 +2,17 @@
 
 ## Overview
 The Weather SMS Service is designed for use in areas with fickle cell service availability. In regions where internet connectivity is unavailable but a 2G signal for SMS exists, this service provides critical weather information.
+This service will be a website where users can add places to be updated on via SMS, but it will also be an SMS-to-API gateway for getting weather information by texting a phone number.
+This project will be hosted online as soon as it is mature enough to provide basic functionality.
 
 Features include:
 - Sending weather outlooks for pre-selected locations via SMS.
-- Responding to user queries for specific place names via text message.
+- Responding to user queries for specific place names via text message (pre-planned or instantly upon request).
+- Sending updates on storms or other significant weather events for both pre-planned and ad-hoc places
 
 ## Requirements
 - Docker and Docker Compose
-- Raspberry Pi or similar machine with a USB GSM Hat (at `/dev/ttyUSB0`)
+- Raspberry Pi or similar machine with a USB GSM Hat & SIM Card (at `/dev/ttyUSB0`)
 - Meteoblue API Key (Free Weather API)
 
 ## Setup
@@ -43,30 +46,11 @@ The following environment variables are configured in `.env`:
 - `METEOBLUE_API_KEY`: Your Meteoblue API key.
 - `GSM_DEVICE`: Path to the GSM modem (default: `/dev/ttyUSB0`).
 
-## Project Structure
-```text
-weather-sms-service/
-├── bin/                # CLI tools and scripts
-├── config/             # Application configuration
-├── data/               # Cache, logs, and other data
-├── docker/             # Docker configuration
-│   └── php/
-│       └── Dockerfile
-├── public/             # Web server entry point (index.php)
-├── src/                # Application source code
-│   └── App/            # Main application module
-├── test/               # Unit and integration tests
-├── .env                # Local environment variables
-├── .gitignore
-├── docker-compose.yml
-└── README.md
-```
-
 ## Mezzio Skeleton
 This project is based on the Mezzio skeleton.
 
 ### Development Mode
-Enable development mode (disables config caching and enables whoops):
+Enable development mode (disables config caching):
 ```bash
 docker-compose run --rm composer development-enable
 ```
