@@ -1,0 +1,9 @@
+{
+    "require": {
+        "doctrine/orm": "^3.7",
+        "doctrine/dbal": "^4.5",
+        "doctrine/migrations": "^3.9",
+        "symfony/cache": "^7.4",
+        "monolog/monolog": "^3.12"
+    }
+}
