@@ -11,3 +11,4 @@ docker/mysql/data/
 /data/cache/*
 !/data/cache/.gitkeep
 docker/php/xdebug.ini
+/html/
