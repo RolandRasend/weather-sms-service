@@ -1,12 +1,10 @@
 services:
-  app:
+  php:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
-    container_name: weather-app
+    container_name: weather-php
     restart: unless-stopped
-    ports:
-      - "80:80"
     volumes:
       - .:/var/www
     environment:
@@ -17,11 +15,21 @@ services:
       PHP_IDE_CONFIG: "serverName=localhost"
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    #TODO: Populate devices with path for actual USB GSM Adapter or Hat once available
-    #devices:
-    #  - "/dev/ttyUSB0:/dev/ttyUSB0"
     depends_on:
       - db
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    container_name: weather-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - php
 
   db:
     image: mysql:latest
