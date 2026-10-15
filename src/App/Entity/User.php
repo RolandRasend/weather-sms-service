@@ -21,7 +21,7 @@ class User
     #[ORM\Column(name: 'user_name', type: Types::STRING, length: 255, unique: true)]
     private string $username;
 
-    #[ORM\Column(name: 'user_password_hash', type: Types::STRING, length: 60)]
+    #[ORM\Column(name: 'user_password_hash', type: Types::TEXT, length: 1000)]
     private string $passwordHash;
 
     #[ORM\Column(name: 'user_created_at', type: Types::DATETIME_IMMUTABLE)]
