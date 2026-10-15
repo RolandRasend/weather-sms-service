@@ -26,10 +26,12 @@ COPY docker/php/www.conf /usr/local/etc/php-fpm.d/zzz-clear-env.conf
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install composer dependencies
-COPY composer.json composer.lock ./
-RUN composer install --no-interaction --optimize-autoloader --no-scripts
-
 RUN touch /tmp/xdebug.log && chmod 666 /tmp/xdebug.log
 
+COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+WORKDIR /var/www
+
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["php-fpm"]

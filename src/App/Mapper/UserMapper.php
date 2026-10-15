@@ -55,6 +55,9 @@ final readonly class UserMapper
     public function checkLogin(string $username, string $password): bool
     {
         try {
+            /**
+             * @var User|null $user
+             */
             $user = $this->entityManager->createQueryBuilder()
                 ->select('User')
                 ->from(User::class, 'User')
@@ -63,7 +66,7 @@ final readonly class UserMapper
                 ->getQuery()
                 ->getOneOrNullResult();
             if (!empty($user)){
-                return password_verify($password, $user->getPassword());
+                return password_verify($password, $user->getPasswordHash());
             }
 
             return false;
