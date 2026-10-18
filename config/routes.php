@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Handler\Account\AddDestinationHandler;
 use App\Handler\Account\DashboardHandler;
 use App\Handler\Account\LoginHandler;
+use App\Handler\Account\PersonalSettingsHandler;
 use App\Handler\Account\RegistrationHandler;
 use App\Handler\Account\UpdatePhoneHandler;
 use App\Handler\HomePageHandler;
@@ -50,4 +51,5 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->patch('/api/account/phone', UpdatePhoneHandler::class, 'account.update_phone');
     $app->post('/api/account/destination', AddDestinationHandler::class, 'account.add_destination');
     $app->get('/dashboard', DashboardHandler::class, 'account.dashboard');
+    $app->get('/personal-settings', PersonalSettingsHandler::class, 'account.personal_settings');
 };

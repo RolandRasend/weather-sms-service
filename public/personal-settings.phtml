@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather SMS Service - Persönliche Einstellungen</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Weather SMS Service</h1>
+            <p>Persönliche Einstellungen</p>
+        </div>
+
+        <div class="dashboard-content">
+
+            <div class="card">
+                <h2>Meine Daten</h2>
+                <table>
+                    <tr>
+                        <th>Benutzername</th>
+                        <td id="user-username"></td>
+                    </tr>
+                    <tr>
+                        <th>Erstellt am</th>
+                        <td id="user-created-at"></td>
+                    </tr>
+                    <tr>
+                        <th>Zuletzt aktualisiert</th>
+                        <td id="user-updated-at"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>SMS-Benachrichtigungen</h2>
+                <p>Verwalte deine SMS-Einstellungen hier.</p>
+
+                <div class="current-phone">
+                    <strong>Aktuelle Telefonnummer:</strong>
+                    <span id="user-phone-number"></span>
+                </div>
+
+                <form id="update-phone-form">
+                    <div class="form-group">
+                        <label for="phone-number">Telefonnummer ändern</label>
+                        <input
+                            type="tel"
+                            id="phone-number"
+                            name="phoneNumber"
+                            placeholder="+49 123 456789"
+                        >
+                    </div>
+                    <button type="submit">Speichern</button>
+                </form>
+
+                <div id="phone-message" style="display:none;"></div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <a href="/dashboard">← Zurück zum Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('update-phone-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const phoneNumber = document.getElementById('phone-number').value;
+            const messageEl = document.getElementById('phone-message');
+
+            fetch('/api/account/phone', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phoneNumber }),
+            })
+                .then(res => res.json())
+                .then(data => {
+                    messageEl.style.display = 'block';
+                    messageEl.textContent = 'Telefonnummer erfolgreich aktualisiert.';
+                })
+                .catch(() => {
+                    messageEl.style.display = 'block';
+                    messageEl.textContent = 'Fehler beim Aktualisieren der Telefonnummer.';
+                });
+        });
+    </script>
+</body>
+</html>
