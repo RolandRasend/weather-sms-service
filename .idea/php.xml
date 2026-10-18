@@ -15,6 +15,7 @@
   <component name="PhpCodeSniffer">
     <phpcs_settings>
       <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/vendor/bin/phpcbf" tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
+      <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="0db88766-3f81-4d7b-a0d2-380b4a19e803" beautifier_path="$PROJECT_DIR$/vendor/bin/phpcbf" tool_path="/Users/robertthieme/PhpstormProjects/weather-sms-service/vendor/bin/phpcs" timeout="30000" />
     </phpcs_settings>
   </component>
   <component name="PhpIncludePathManager">
@@ -140,6 +141,35 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
       <path value="$PROJECT_DIR$/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/html/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/html/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/html/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/polyfill-php86" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/html/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/html/vendor/composer" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/polyfill-php84" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/html/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/html/vendor/doctrine/deprecations" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
