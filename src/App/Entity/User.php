@@ -30,6 +30,9 @@ class User
     #[ORM\Column(name: 'user_updated_at', type: Types::DATETIME_IMMUTABLE)]
     private DateTimeImmutable $updatedAt;
 
+    #[ORM\Column(name: 'user_phone_number', type: Types::STRING, length: 255, nullable: true)]
+    private ?string $phoneNumber = null;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -73,9 +76,14 @@ class User
         return $this->updatedAt;
     }
 
-    #[ORM\PreUpdate]
-    public function onPreUpdate(): void
+    public function getPhoneNumber(): ?string
     {
-        $this->updatedAt = new DateTimeImmutable();
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+        return $this;
     }
 }
