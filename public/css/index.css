@@ -89,3 +89,22 @@ button:hover {
     text-align: center;
     color: #795548;
 }
+
+h2 {
+    color: #5d4037;
+}
+
+h2 a:visited {
+    color: #5d4037;
+    text-decoration: none;
+}
+
+p a {
+    color: #795548;
+    text-decoration: none;
+}
+
+p a:visited {
+    color: #795548;
+    text-decoration: none;
+}
