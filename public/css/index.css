@@ -99,12 +99,7 @@ h2 a:visited {
     text-decoration: none;
 }
 
-p a {
-    color: #795548;
-    text-decoration: none;
-}
-
-p a:visited {
+a {
     color: #795548;
     text-decoration: none;
 }
